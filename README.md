@@ -57,16 +57,16 @@ A lightweight event and meetup management platform built with the MERN stack. It
 
  ---
 
- ##💡 Future Improvements
+ ## 💡 Future Improvements
   - 🗺️ Google Maps integration for event locations
 
   - 📣 In-app notifications for event updates
 
-  -🧠 Event recommendation system
+  - 🧠 Event recommendation system
 
-  -💬 Comments or discussion section for events
+  - 💬 Comments or discussion section for events
 
-  -📆 Calendar view for easier scheduling
+  - 📆 Calendar view for easier scheduling
 
   ---
 
