@@ -1,3 +1,8 @@
-# https://www.robotstxt.org/robotstxt.html
 User-agent: *
-Disallow:
+Allow: /
+Disallow: /join/
+Disallow: /create
+Disallow: /mymeetings
+Disallow: /meetings
+
+Sitemap: https://your-domain.com/sitemap.xml

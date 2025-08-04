@@ -15,6 +15,7 @@ import MeetingDateField from "../components/FormComponents/MeetingDateField";
 import MeetingMaximumUsersField from "../components/FormComponents/MeetingMaximumUsersField";
 import MeetingNameField from "../components/FormComponents/MeetingNameFIeld";
 import MeetingUserField from "../components/FormComponents/MeetingUserField";
+import MeetingSuccessCard from "../components/MeetingSuccessCard";
 
 import Header from "../components/Header";
 import useAuth from "../hooks/useAuth";
@@ -35,6 +36,8 @@ export default function VideoConference() {
   const [selectedUser, setSelectedUser] = useState<Array<UserType>>([]);
   const [startDate, setStartDate] = useState(moment());
   const [size, setSize] = useState(1);
+  const [showSuccessCard, setShowSuccessCard] = useState(false);
+  const [createdMeetingId, setCreatedMeetingId] = useState("");
   const [showErrors, setShowErrors] = useState<{
     meetingName: FieldErrorType;
     meetingUsers: FieldErrorType;
@@ -78,27 +81,33 @@ export default function VideoConference() {
   };
 
   const createMeeting = async () => {
-    if (!validateForm()) {
-      const meetingId = generateMeetingID();
-      await addDoc(meetingsRef, {
-        createdBy: uid,
-        meetingId,
-        meetingName,
-        meetingType: anyoneCanJoin ? "anyone-can-join" : "video-conference",
-        invitedUsers: anyoneCanJoin
-          ? []
-          : selectedUser.map((user: UserType) => user.uid),
-        meetingDate: startDate.format("L"),
-        maxUsers: anyoneCanJoin ? 100 : size,
-        status: true,
-      });
+    try {
+      if (!validateForm()) {
+        const meetingId = generateMeetingID();
+        
+        const meetingData = {
+          createdBy: uid,
+          meetingId,
+          meetingName,
+          meetingType: anyoneCanJoin ? "anyone-can-join" : "video-conference",
+          invitedUsers: anyoneCanJoin
+            ? []
+            : selectedUser.map((user: UserType) => user.uid),
+          meetingDate: startDate.format("L"),
+          maxUsers: anyoneCanJoin ? 100 : size,
+          status: true,
+        };
+        
+        await addDoc(meetingsRef, meetingData);
+        
+        setCreatedMeetingId(meetingId);
+        setShowSuccessCard(true);
+      }
+    } catch (error) {
       createToast({
-        title: anyoneCanJoin
-          ? "Anyone can join meeting created successfully"
-          : "Video Conference created successfully.",
-        type: "success",
+        title: "Failed to create meeting. Please try again.",
+        type: "danger",
       });
-      navigate("/");
     }
   };
 
@@ -151,6 +160,17 @@ export default function VideoConference() {
           <CreateMeetingButtons createMeeting={createMeeting} />
         </EuiForm>
       </EuiFlexGroup>
+      
+      {showSuccessCard && (
+        <MeetingSuccessCard
+          meetingId={createdMeetingId}
+          meetingName={meetingName}
+          onClose={() => {
+            setShowSuccessCard(false);
+            navigate("/");
+          }}
+        />
+      )}
     </div>
   );
 }

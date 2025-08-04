@@ -9,7 +9,6 @@ import {
 } from "@elastic/eui";
 
 import { getDocs, query } from "firebase/firestore";
-import moment from "moment";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useAppSelector } from "../app/hooks";
@@ -71,24 +70,16 @@ export default function Meeting() {
 
       render: (meeting: MeetingType) => {
         if (meeting.status) {
-          if (meeting.meetingDate === moment().format("L")) {
-            return (
-              <EuiBadge color="success">
-                <Link
-                  to={`/join/${meeting.meetingId}`}
-                  style={{ color: "black" }}
-                >
-                  Join Now
-                </Link>
-              </EuiBadge>
-            );
-          } else if (
-            moment(meeting.meetingDate).isBefore(moment().format("L"))
-          ) {
-            return <EuiBadge color="default">Ended</EuiBadge>;
-          } else if (moment(meeting.meetingDate).isAfter()) {
-            return <EuiBadge color="primary">Upcoming</EuiBadge>;
-          }
+          return (
+            <EuiBadge color="success">
+              <Link
+                to={`/join/${meeting.meetingId}`}
+                style={{ color: "black" }}
+              >
+                Join Now
+              </Link>
+            </EuiBadge>
+          );
         } else return <EuiBadge color="danger">Cancelled</EuiBadge>;
       },
     },

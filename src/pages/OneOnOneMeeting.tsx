@@ -8,6 +8,7 @@ import CreateMeetingButtons from "../components/FormComponents/CreateMeetingButt
 import MeetingDateField from "../components/FormComponents/MeetingDateField";
 import MeetingNameField from "../components/FormComponents/MeetingNameFIeld";
 import MeetingUserField from "../components/FormComponents/MeetingUserField";
+import MeetingSuccessCard from "../components/MeetingSuccessCard";
 
 import Header from "../components/Header";
 import useAuth from "../hooks/useAuth";
@@ -27,6 +28,8 @@ export default function OneOnOneMeeting() {
   const [meetingName, setMeetingName] = useState("");
   const [selectedUser, setSelectedUser] = useState<Array<UserType>>([]);
   const [startDate, setStartDate] = useState(moment());
+  const [showSuccessCard, setShowSuccessCard] = useState(false);
+  const [createdMeetingId, setCreatedMeetingId] = useState("");
   const [showErrors, setShowErrors] = useState<{
     meetingName: FieldErrorType;
     meetingUser: FieldErrorType;
@@ -69,23 +72,31 @@ export default function OneOnOneMeeting() {
   };
 
   const createMeeting = async () => {
-    if (!validateForm()) {
-      const meetingId = generateMeetingID();
-      await addDoc(meetingsRef, {
-        createdBy: uid,
-        meetingId,
-        meetingName,
-        meetingType: "1-on-1",
-        invitedUsers: [selectedUser[0].uid],
-        meetingDate: startDate.format("L"),
-        maxUsers: 1,
-        status: true,
-      });
+    try {
+      if (!validateForm()) {
+        const meetingId = generateMeetingID();
+        
+        const meetingData = {
+          createdBy: uid,
+          meetingId,
+          meetingName,
+          meetingType: "1-on-1",
+          invitedUsers: [selectedUser[0].uid],
+          meetingDate: startDate.format("L"),
+          maxUsers: 1,
+          status: true,
+        };
+        
+        await addDoc(meetingsRef, meetingData);
+        
+        setCreatedMeetingId(meetingId);
+        setShowSuccessCard(true);
+      }
+    } catch (error) {
       createToast({
-        title: "One on One Meeting Created Successfully",
-        type: "success",
+        title: "Failed to create meeting. Please try again.",
+        type: "danger",
       });
-      navigate("/");
     }
   };
 
@@ -124,6 +135,17 @@ export default function OneOnOneMeeting() {
           <CreateMeetingButtons createMeeting={createMeeting} />
         </EuiForm>
       </EuiFlexGroup>
+      
+      {showSuccessCard && (
+        <MeetingSuccessCard
+          meetingId={createdMeetingId}
+          meetingName={meetingName}
+          onClose={() => {
+            setShowSuccessCard(false);
+            navigate("/");
+          }}
+        />
+      )}
     </div>
   );
 }
