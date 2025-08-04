@@ -40,8 +40,8 @@ A full-featured video conferencing application built with React, TypeScript, Fir
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/yourusername/react-zoom-clone.git
-   cd react-zoom-clone
+   git clone https://github.com/Algoraver22/meetup-lite.git
+   cd meetup-lite
    ```
 
 2. **Install dependencies**
@@ -51,7 +51,7 @@ A full-featured video conferencing application built with React, TypeScript, Fir
 
 3. **Environment Setup**
    
-   Create a `.env` file in the root directory:
+   Create a `.env.local` file in the root directory with your actual credentials:
    ```env
    # Firebase Configuration
    REACT_APP_FIREBASE_API_KEY=your_firebase_api_key
@@ -139,21 +139,20 @@ src/
 
 ## 🚀 Deployment
 
-### Netlify
+See [DEPLOYMENT.md](DEPLOYMENT.md) for detailed deployment instructions.
+
+### Quick Deploy:
+
+#### Netlify
 1. Connect your GitHub repository to Netlify
 2. Set build command: `npm run build`
 3. Set publish directory: `build`
 4. Add environment variables in Netlify dashboard
 
-### Vercel
+#### Vercel
 1. Connect your GitHub repository to Vercel
 2. Vercel will auto-detect React app
 3. Add environment variables in Vercel dashboard
-
-### Manual Deployment
-1. Run `npm run build`
-2. Upload `build` folder to your hosting provider
-3. Configure server to serve `index.html` for all routes
 
 ## 🌟 Key Features Explained
 
@@ -176,11 +175,7 @@ src/
 
 ## 🤝 Contributing
 
-1. Fork the repository
-2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
+See [CONTRIBUTING.md](CONTRIBUTING.md) for detailed contribution guidelines.
 
 ## 📝 License
 
@@ -195,8 +190,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 📞 Support
 
-If you have any questions or need help, please open an issue or contact [your-email@example.com](mailto:your-email@example.com).
+If you have any questions or need help, please open an issue.
 
 ---
 
-**Made with ❤️ by [Your Name]**
+**Made with ❤️ by Anurag Chaturvedi**
