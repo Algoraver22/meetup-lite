@@ -23,6 +23,7 @@ import { useNavigate } from "react-router-dom";
 import { useAppDispatch } from "../app/hooks";
 import { setUser } from "../app/slices/AuthSlice";
 import { collection, query, where, addDoc, getDocs } from "firebase/firestore";
+import DebugConfig from "../components/DebugConfig";
 
 function Login() {
   const navigate = useNavigate();
@@ -54,6 +55,7 @@ function Login() {
   };
   return (
     <EuiProvider colorMode="dark">
+      <DebugConfig />
       <EuiFlexGroup
         justifyContent="center"
         alignItems="center"
