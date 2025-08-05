@@ -3,9 +3,11 @@ import {
   EuiFlexGroup,
   EuiFlexItem,
   EuiHeader,
+  EuiImage,
   EuiText,
   EuiTextColor,
 } from "@elastic/eui";
+import logo from "../assets/logo.png";
 import { signOut } from "firebase/auth";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
@@ -66,11 +68,18 @@ export default function Header() {
     {
       items: [
         <Link to="/">
-          <EuiText>
-            <h2 style={{ padding: "0 1vw" }}>
-              <EuiTextColor color="#0b5cff">Meetup-lite</EuiTextColor>
-            </h2>
-          </EuiText>
+          <EuiFlexGroup alignItems="center" gutterSize="s">
+            <EuiFlexItem grow={false}>
+              <EuiImage src={logo} alt="Meetup Logo" size="40px" />
+            </EuiFlexItem>
+            <EuiFlexItem grow={false}>
+              <EuiText>
+                <h2 style={{ padding: "0 1vw" }}>
+                  <EuiTextColor color="#0b5cff">Meetup-lite</EuiTextColor>
+                </h2>
+              </EuiText>
+            </EuiFlexItem>
+          </EuiFlexGroup>
         </Link>,
       ],
     },
@@ -135,11 +144,18 @@ export default function Header() {
     {
       items: [
         <Link to="/">
-          <EuiText>
-            <h2 style={{ padding: "0 1vw" }}>
-              <EuiTextColor color="#0b5cff">Zoom</EuiTextColor>
-            </h2>
-          </EuiText>
+          <EuiFlexGroup alignItems="center" gutterSize="s">
+            <EuiFlexItem grow={false}>
+              <EuiImage src={logo} alt="Meetup Logo" size="30px" />
+            </EuiFlexItem>
+            <EuiFlexItem grow={false}>
+              <EuiText>
+                <h2 style={{ padding: "0 1vw" }}>
+                  <EuiTextColor color="#0b5cff">Meetup</EuiTextColor>
+                </h2>
+              </EuiText>
+            </EuiFlexItem>
+          </EuiFlexGroup>
         </Link>,
       ],
     },
