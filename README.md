@@ -1,4 +1,4 @@
-# 🎥 React Zoom Clone - Video Meeting Platform
+# 🎥 Meetup-lite - Video Meeting Platform
 
 A full-featured video conferencing application built with React, TypeScript, Firebase, and 100ms for video calling capabilities.
 
