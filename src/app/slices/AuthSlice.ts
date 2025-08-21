@@ -29,11 +29,14 @@ export const authSlice = createSlice({
         uid: string;
         email: string;
         name: string;
-      }>
+      } | null>
     ) => {
-      state.userInfo = action.payload;
+      state.userInfo = action.payload || undefined;
+    },
+    logout: (state) => {
+      state.userInfo = undefined;
     },
   },
 });
 
-export const { setUser, changeTheme } = authSlice.actions;
+export const { setUser, changeTheme, logout } = authSlice.actions;

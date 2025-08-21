@@ -12,7 +12,7 @@ import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useAppSelector } from "../app/hooks";
-import { changeTheme, setUser } from "../app/slices/AuthSlice";
+import { changeTheme, logout as logoutAction } from "../app/slices/AuthSlice";
 import {
   getCreateMeetingBreadCrumbs,
   getDashboardBreadCrumbs,
@@ -54,7 +54,7 @@ export default function Header() {
 
   const logout = () => {
     localStorage.removeItem("meetup-user");
-    dispatch(setUser(null));
+    dispatch(logoutAction());
     navigate("/login");
   };
 
