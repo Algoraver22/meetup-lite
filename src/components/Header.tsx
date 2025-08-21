@@ -8,12 +8,11 @@ import {
   EuiTextColor,
 } from "@elastic/eui";
 import logo from "../assets/logo.png";
-import { signOut } from "firebase/auth";
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useAppSelector } from "../app/hooks";
-import { changeTheme } from "../app/slices/AuthSlice";
+import { changeTheme, setUser } from "../app/slices/AuthSlice";
 import {
   getCreateMeetingBreadCrumbs,
   getDashboardBreadCrumbs,
@@ -22,7 +21,6 @@ import {
   getOneOnOneMeetingBreadCrumbs,
   getVideoConferenceBreadCrumbs,
 } from "../utils/breadcrumbs";
-import { firebaseAuth } from "../utils/firebaseConfig";
 import { BreadCrumbsType } from "../utils/types";
 
 export default function Header() {
@@ -55,7 +53,9 @@ export default function Header() {
   }, [location, navigate]);
 
   const logout = () => {
-    signOut(firebaseAuth);
+    localStorage.removeItem("meetup-user");
+    dispatch(setUser(null));
+    navigate("/login");
   };
 
   const invertTheme = () => {

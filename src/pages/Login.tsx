@@ -1,5 +1,6 @@
 import {
   EuiButton,
+  EuiFieldText,
   EuiFlexGroup,
   EuiFlexItem,
   EuiImage,
@@ -12,43 +13,39 @@ import {
 import logo from "../assets/logo.png";
 import animation from "../assets/animation.gif";
 
-import React from "react";
-import {
-  GoogleAuthProvider,
-  onAuthStateChanged,
-  signInWithPopup,
-} from "firebase/auth";
-import { firebaseAuth, firebaseDB, usersRef } from "../utils/firebaseConfig";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAppDispatch } from "../app/hooks";
 import { setUser } from "../app/slices/AuthSlice";
-import { collection, query, where, addDoc, getDocs } from "firebase/firestore";
 
 function Login() {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
+  const [username, setUsername] = useState("");
 
-  onAuthStateChanged(firebaseAuth, (currentUser) => {
-    if (currentUser) navigate("/");
-  });
+  // Check if user is already logged in
+  React.useEffect(() => {
+    const savedUser = localStorage.getItem("meetup-user");
+    if (savedUser) {
+      const user = JSON.parse(savedUser);
+      dispatch(setUser(user));
+      navigate("/");
+    }
+  }, [dispatch, navigate]);
 
-  const login = async () => {
-    const provider = new GoogleAuthProvider();
-    const {
-      user: { displayName, email, uid },
-    } = await signInWithPopup(firebaseAuth, provider);
-
-    if (email) {
-      const firestoreQuery = query(usersRef, where("uid", "==", uid));
-      const fetchedUser = await getDocs(firestoreQuery);
-      if (fetchedUser.docs.length === 0) {
-        await addDoc(collection(firebaseDB, "users"), {
-          uid,
-          name: displayName,
-          email,
-        });
-      }
-      dispatch(setUser({ uid, email: email!, name: displayName! }));
+  const login = () => {
+    if (username.trim()) {
+      const user = {
+        uid: Date.now().toString(), // Simple unique ID
+        email: `${username}@meetup.local`,
+        name: username,
+      };
+      
+      // Save to localStorage
+      localStorage.setItem("meetup-user", JSON.stringify(user));
+      
+      // Update Redux state
+      dispatch(setUser(user));
       navigate("/");
     }
   };
@@ -75,8 +72,15 @@ function Login() {
                   </h3>
                 </EuiText>
                 <EuiSpacer size="l" />
-                <EuiButton fill onClick={login}>
-                  Login with Google
+                <EuiFieldText
+                  placeholder="Enter your username"
+                  value={username}
+                  onChange={(e) => setUsername(e.target.value)}
+                  onKeyPress={(e) => e.key === 'Enter' && login()}
+                />
+                <EuiSpacer size="m" />
+                <EuiButton fill onClick={login} disabled={!username.trim()}>
+                  Enter Meeting Platform
                 </EuiButton>
               </EuiFlexItem>
             </EuiFlexGroup>
