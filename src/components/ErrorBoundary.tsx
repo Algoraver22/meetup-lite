@@ -1,5 +1,4 @@
 import React, { Component, ErrorInfo, ReactNode } from 'react';
-import { EuiPanel, EuiText, EuiButton, EuiSpacer } from '@elastic/eui';
 
 interface Props {
   children: ReactNode;
@@ -26,25 +25,17 @@ class ErrorBoundary extends Component<Props, State> {
   public render() {
     if (this.state.hasError) {
       return (
-        <div style={{ 
-          height: '100vh', 
-          display: 'flex', 
-          justifyContent: 'center', 
-          alignItems: 'center' 
-        }}>
-          <EuiPanel style={{ maxWidth: '500px', textAlign: 'center' }}>
-            <EuiText>
-              <h2>🚨 Something went wrong</h2>
-              <p>We're sorry, but something unexpected happened.</p>
-            </EuiText>
-            <EuiSpacer />
-            <EuiButton 
-              fill 
+        <div className="h-screen flex justify-center items-center">
+          <div className="max-w-md p-6 bg-white rounded-lg shadow-lg text-center">
+            <h2 className="text-2xl font-bold mb-4">🚨 Something went wrong</h2>
+            <p className="mb-4 text-gray-600">We're sorry, but something unexpected happened.</p>
+            <button 
+              className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
               onClick={() => window.location.reload()}
             >
               Reload Page
-            </EuiButton>
-          </EuiPanel>
+            </button>
+          </div>
         </div>
       );
     }
