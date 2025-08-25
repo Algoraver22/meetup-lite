@@ -2,7 +2,7 @@
   "name": "meetup-lite",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://algoraver22.github.io/meetup-lite",
+  "homepage": ".",
   "dependencies": {
     "@100mslive/react-sdk": "^0.10.35",
     "@elastic/datemath": "^5.0.3",
@@ -36,7 +36,12 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "serve": "npx serve -s build",
-    "analyze": "npx webpack-bundle-analyzer build/static/js/*.js"
+    "analyze": "npx webpack-bundle-analyzer build/static/js/*.js",
+    "install:legacy": "npm install --legacy-peer-deps",
+    "build:render": "npm install --legacy-peer-deps && npm run build"
+  },
+  "overrides": {
+    "@types/react": "^17.0.0"
   },
   "eslintConfig": {
     "extends": [
