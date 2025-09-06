@@ -3,8 +3,7 @@ import {
   EuiProvider,
   EuiThemeProvider,
 } from "@elastic/eui";
-import { EuiThemeColorMode } from "@elastic/eui/src/services/theme";
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { Route, Routes } from "react-router-dom";
 import { useAppSelector } from "./app/hooks";
@@ -23,7 +22,6 @@ import VideoConference from "./pages/VideoConference";
 export default function App() {
   const dispatch = useDispatch();
   const isDarkTheme = useAppSelector((zoomApp) => zoomApp.auth.isDarkTheme);
-  const [isInitialEffect, setIsInitialEffect] = useState(true);
   const toasts = useAppSelector((zoom) => zoom.meetings.toasts);
 
   const removeToast = (removedToast: { id: string }) => {
