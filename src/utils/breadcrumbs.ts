@@ -1,7 +1,4 @@
-PS D:\All-Downloads\meetup-lite-thi is latest\meetup-lite-main> git add .
->>
-fatal: not a git repository (or any of the parent directories): .git
-PS D:\All-Downloads\meetup-lite-thi is latest\meetup-lite-main> import { NavigateFunction } from "react-router-dom";
+import { NavigateFunction } from "react-router-dom";
 import { BreadCrumbsType } from "./types";
 
 export const getDashboardBreadCrumbs = (
