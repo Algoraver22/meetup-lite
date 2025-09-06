@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meetup Lite - Project Documentation</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f8f9fa;
+        }
+        .container {
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #2c3e50;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 10px;
+            font-size: 2.5em;
+            text-align: center;
+        }
+        h2 {
+            color: #34495e;
+            border-left: 4px solid #3498db;
+            padding-left: 15px;
+            margin-top: 40px;
+            font-size: 1.8em;
+        }
+        h3 {
+            color: #2c3e50;
+            margin-top: 30px;
+            font-size: 1.4em;
+        }
+        h4 {
+            color: #34495e;
+            margin-top: 25px;
+            font-size: 1.2em;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #3498db;
+            color: white;
+            font-weight: bold;
+        }
+        tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+        tr:hover {
+            background-color: #e8f4f8;
+        }
+        code {
+            background-color: #f1f2f6;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            color: #e74c3c;
+        }
+        .code-block {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            padding: 15px;
+            border-radius: 5px;
+            font-family: 'Courier New', monospace;
+            margin: 15px 0;
+            overflow-x: auto;
+        }
+        .highlight {
+            background-color: #fff3cd;
+            padding: 15px;
+            border-left: 4px solid #ffc107;
+            margin: 20px 0;
+            border-radius: 0 5px 5px 0;
+        }
+        .section {
+            margin-bottom: 40px;
+        }
+        .tech-badge {
+            background-color: #3498db;
+            color: white;
+            padding: 4px 8px;
+            border-radius: 15px;
+            font-size: 0.9em;
+            font-weight: bold;
+        }
+        .flow-diagram {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            border: 2px dashed #3498db;
+            margin: 20px 0;
+            text-align: center;
+            font-family: monospace;
+        }
+        @media print {
+            body { background: white; }
+            .container { box-shadow: none; }
+            h1, h2 { page-break-after: avoid; }
+            table { page-break-inside: avoid; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📘 Meetup Lite - Project Documentation</h1>
+        
+        <div class="section">
+            <h2>0. Technology Explanations</h2>
+            
+            <h3>What is React?</h3>
+            <div class="highlight">
+                <strong>React</strong> is a JavaScript library created by Facebook for building user interfaces, especially for web applications. Think of it like building blocks for websites.
+            </div>
+            <p><strong>Key Concepts:</strong></p>
+            <ul>
+                <li><strong>Components:</strong> Reusable pieces of UI (like LEGO blocks)</li>
+                <li><strong>Virtual DOM:</strong> React creates a copy of the webpage in memory for faster updates</li>
+                <li><strong>JSX:</strong> Allows you to write HTML-like code inside JavaScript</li>
+                <li><strong>State:</strong> Data that can change and update the UI automatically</li>
+            </ul>
+            <p><strong>Why Use React?</strong></p>
+            <ul>
+                <li>Makes complex websites easier to build and maintain</li>
+                <li>Reusable components save development time</li>
+                <li>Large community and job market</li>
+                <li>Used by Facebook, Netflix, Instagram, Airbnb</li>
+            </ul>
+            <p><strong>In Our Project:</strong> React creates all the pages (Login, Dashboard, Meeting rooms) and handles user interactions.</p>
+
+            <h3>What is TypeScript?</h3>
+            <div class="highlight">
+                <strong>TypeScript</strong> is JavaScript with superpowers. It adds "types" to JavaScript, which means you specify what kind of data each variable should hold.
+            </div>
+            <p><strong>Key Concepts:</strong></p>
+            <ul>
+                <li><strong>Types:</strong> Specify if a variable is text, number, boolean, etc.</li>
+                <li><strong>Interfaces:</strong> Define the structure of objects</li>
+                <li><strong>Compile-time Checking:</strong> Catches errors before the code runs</li>
+                <li><strong>Better IDE Support:</strong> Auto-completion and error detection</li>
+            </ul>
+            <div class="code-block">
+// JavaScript (no types)
+let name = "John";
+let age = 25;
+
+// TypeScript (with types)
+let name: string = "John";
+let age: number = 25;
+            </div>
+            <p><strong>In Our Project:</strong> TypeScript ensures our meeting data, user information, and component props are correctly structured.</p>
+
+            <h3>What is Firebase?</h3>
+            <div class="highlight">
+                <strong>Firebase</strong> is Google's platform that provides backend services for web and mobile apps without needing to build your own server.
+            </div>
+            <p><strong>Key Services:</strong></p>
+            <ul>
+                <li><strong>Authentication:</strong> Login/signup with Google, Facebook, email</li>
+                <li><strong>Firestore Database:</strong> Store and sync data in real-time</li>
+                <li><strong>Hosting:</strong> Deploy your website</li>
+                <li><strong>Storage:</strong> Store files like images and videos</li>
+            </ul>
+            <p><strong>Why Use Firebase?</strong></p>
+            <ul>
+                <li>No server setup required</li>
+                <li>Real-time data synchronization</li>
+                <li>Automatic scaling</li>
+                <li>Google's infrastructure reliability</li>
+            </ul>
+            <p><strong>In Our Project:</strong> Firebase handles user login with Google and stores all meeting information in the cloud.</p>
+
+            <h3>What is Redux?</h3>
+            <div class="highlight">
+                <strong>Redux</strong> is a state management library that keeps all your app's data in one central place, making it easier to manage and debug.
+            </div>
+            <p><strong>Think of it like a bank:</strong></p>
+            <ul>
+                <li>Store = Bank vault (holds all money/data)</li>
+                <li>Actions = Deposit/withdrawal slips (describe transactions)</li>
+                <li>Reducers = Bank tellers (process transactions)</li>
+            </ul>
+            <p><strong>In Our Project:</strong> Redux manages user login status, theme preferences, and meeting data across all pages.</p>
+
+            <h3>What is 100ms?</h3>
+            <div class="highlight">
+                <strong>100ms</strong> is a video calling platform that provides APIs and SDKs to add video/audio calling features to your app without building the complex infrastructure yourself.
+            </div>
+            <p><strong>Key Features:</strong></p>
+            <ul>
+                <li><strong>Video/Audio Calling:</strong> High-quality real-time communication</li>
+                <li><strong>Screen Sharing:</strong> Share your screen with other participants</li>
+                <li><strong>Chat:</strong> Text messaging during calls</li>
+                <li><strong>Recording:</strong> Record meetings for later viewing</li>
+            </ul>
+            <p><strong>In Our Project:</strong> 100ms powers all video meetings - when users click "Join Meeting", they enter a 100ms video room.</p>
+
+            <h3>What is Elastic UI (EUI)?</h3>
+            <div class="highlight">
+                <strong>Elastic UI</strong> is a design system and React component library created by Elastic. It provides pre-built, professional-looking UI components.
+            </div>
+            <p><strong>Key Components:</strong></p>
+            <ul>
+                <li><strong>Buttons:</strong> Various button styles and sizes</li>
+                <li><strong>Forms:</strong> Input fields, dropdowns, date pickers</li>
+                <li><strong>Tables:</strong> Data tables with sorting and filtering</li>
+                <li><strong>Navigation:</strong> Headers, breadcrumbs, side navigation</li>
+            </ul>
+            <p><strong>In Our Project:</strong> EUI provides all the buttons, forms, tables, and layout components you see in the interface.</p>
+
+            <h3>What is React Router?</h3>
+            <div class="highlight">
+                <strong>React Router</strong> is a library that handles navigation in React applications. It allows you to create different "pages" in a single-page application.
+            </div>
+            <div class="flow-diagram">
+/login → Shows Login component<br>
+/dashboard → Shows Dashboard component<br>
+/meeting/123 → Shows Meeting component with ID 123
+            </div>
+            <p><strong>In Our Project:</strong> React Router handles navigation between Login, Dashboard, Create Meeting, and Join Meeting pages.</p>
+
+            <h3>What is GitHub Actions?</h3>
+            <div class="highlight">
+                <strong>GitHub Actions</strong> is a CI/CD platform that automatically builds, tests, and deploys your code when you push changes to GitHub.
+            </div>
+            <p><strong>Key Concepts:</strong></p>
+            <ul>
+                <li><strong>Workflows:</strong> Automated processes triggered by events</li>
+                <li><strong>Actions:</strong> Individual tasks (build, test, deploy)</li>
+                <li><strong>Runners:</strong> Virtual machines that execute workflows</li>
+            </ul>
+            <p><strong>In Our Project:</strong> GitHub Actions automatically builds and deploys the app to GitHub Pages whenever code is pushed.</p>
+        </div>
+        
+        <div class="section">
+            <h2>1. Tech Stack</h2>
+            
+            <h3>Frontend Technologies</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Technology</th>
+                        <th>Version</th>
+                        <th>Purpose in Project</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>React</strong></td>
+                        <td><span class="tech-badge">17.0.2</span></td>
+                        <td>Core frontend framework for building the user interface and managing component state</td>
+                    </tr>
+                    <tr>
+                        <td><strong>TypeScript</strong></td>
+                        <td><span class="tech-badge">4.8.4</span></td>
+                        <td>Provides type safety and better development experience with static typing</td>
+                    </tr>
+                    <tr>
+                        <td><strong>React Router DOM</strong></td>
+                        <td><span class="tech-badge">6.4.3</span></td>
+                        <td>Handles client-side routing between different pages (Login, Dashboard, Meetings)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Redux Toolkit</strong></td>
+                        <td><span class="tech-badge">1.9.0</span></td>
+                        <td>Manages global application state (user authentication, theme preferences)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Elastic UI (EUI)</strong></td>
+                        <td><span class="tech-badge">70.2.0</span></td>
+                        <td>Provides pre-built UI components for consistent design (buttons, forms, tables)</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Authentication & Database</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Technology</th>
+                        <th>Version</th>
+                        <th>Purpose in Project</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Firebase</strong></td>
+                        <td><span class="tech-badge">12.0.0</span></td>
+                        <td>Handles user authentication via Google OAuth and stores meeting data in Firestore</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Firebase Auth</strong></td>
+                        <td><span class="tech-badge">-</span></td>
+                        <td>Manages user login/logout and session management</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Firebase Firestore</strong></td>
+                        <td><span class="tech-badge">-</span></td>
+                        <td>NoSQL database storing user profiles and meeting information</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Video Calling</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Technology</th>
+                        <th>Version</th>
+                        <th>Purpose in Project</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>100ms React SDK</strong></td>
+                        <td><span class="tech-badge">0.10.35</span></td>
+                        <td>Provides video calling functionality for meetings (camera, microphone, screen sharing)</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Development & Deployment</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Technology</th>
+                        <th>Version</th>
+                        <th>Purpose in Project</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>GitHub Actions</strong></td>
+                        <td><span class="tech-badge">-</span></td>
+                        <td>Automated CI/CD pipeline for building and deploying to GitHub Pages</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Netlify</strong></td>
+                        <td><span class="tech-badge">-</span></td>
+                        <td>Alternative hosting platform with automatic deployments</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Vercel</strong></td>
+                        <td><span class="tech-badge">-</span></td>
+                        <td>Primary hosting platform for the live application</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>2. File-by-File Functionality</h2>
+
+            <h3>Root Configuration Files</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>File Name</th>
+                        <th>Purpose / Functionality</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>package.json</code></td>
+                        <td>Defines project dependencies, scripts, and metadata</td>
+                    </tr>
+                    <tr>
+                        <td><code>tsconfig.json</code></td>
+                        <td>TypeScript compiler configuration</td>
+                    </tr>
+                    <tr>
+                        <td><code>.env</code></td>
+                        <td>Environment variables template (placeholder values)</td>
+                    </tr>
+                    <tr>
+                        <td><code>.env.local</code></td>
+                        <td>Local development environment variables (actual credentials)</td>
+                    </tr>
+                    <tr>
+                        <td><code>README.md</code></td>
+                        <td>Project documentation and setup instructions</td>
+                    </tr>
+                    <tr>
+                        <td><code>DEPLOYMENT.md</code></td>
+                        <td>Deployment instructions for various platforms</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Source Code (/src)</h3>
+
+            <h4>Main Application Files</h4>
+            <table>
+                <thead>
+                    <tr>
+                        <th>File Name</th>
+                        <th>Purpose / Functionality</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>index.tsx</code></td>
+                        <td>Entry point that renders the React app into the DOM</td>
+                    </tr>
+                    <tr>
+                        <td><code>App.tsx</code></td>
+                        <td>Root component that sets up routing and global providers</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h4>Components (/src/components)</h4>
+            <table>
+                <thead>
+                    <tr>
+                        <th>File Name</th>
+                        <th>Purpose / Functionality</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>Header.tsx</code></td>
+                        <td>Navigation header with logo, user info, and logout functionality</td>
+                    </tr>
+                    <tr>
+                        <td><code>HMSMeeting.tsx</code></td>
+                        <td>Video meeting component using 100ms SDK</td>
+                    </tr>
+                    <tr>
+                        <td><code>ErrorBoundary.tsx</code></td>
+                        <td>Catches and displays JavaScript errors gracefully</td>
+                    </tr>
+                    <tr>
+                        <td><code>LoadingSpinner.tsx</code></td>
+                        <td>Reusable loading indicator component</td>
+                    </tr>
+                    <tr>
+                        <td><code>MeetingSuccessCard.tsx</code></td>
+                        <td>Success message after creating meetings</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h4>Pages (/src/pages)</h4>
+            <table>
+                <thead>
+                    <tr>
+                        <th>File Name</th>
+                        <th>Purpose / Functionality</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><code>Login.tsx</code></td>
+                        <td>Login page with Google OAuth authentication</td>
+                    </tr>
+                    <tr>
+                        <td><code>Dashboard.tsx</code></td>
+                        <td>Main dashboard with meeting options</td>
+                    </tr>
+                    <tr>
+                        <td><code>CreateMeeting.tsx</code></td>
+                        <td>Page for selecting meeting type</td>
+                    </tr>
+                    <tr>
+                        <td><code>OneOnOneMeeting.tsx</code></td>
+                        <td>Form for creating 1-on-1 meetings</td>
+                    </tr>
+                    <tr>
+                        <td><code>VideoConference.tsx</code></td>
+                        <td>Form for creating group video conferences</td>
+                    </tr>
+                    <tr>
+                        <td><code>MyMeetings.tsx</code></td>
+                        <td>Lists meetings created by the current user</td>
+                    </tr>
+                    <tr>
+                        <td><code>JoinMeeting.tsx</code></td>
+                        <td>Validates and joins meetings via URL</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="section">
+            <h2>3. How the Project Works (Overall Functionality)</h2>
+
+            <div class="highlight">
+                <strong>Application Overview:</strong> Meetup Lite is a video conferencing web application that allows users to create, schedule, and join video meetings. It's built as a Single Page Application (SPA) using React and provides real-time video calling capabilities.
+            </div>
+
+            <h3>User Journey Flow</h3>
+
+            <h4>1. Authentication Process</h4>
+            <div class="flow-diagram">
+                User visits app → Login page → Google OAuth → Firebase Auth → Dashboard
+            </div>
+            <ul>
+                <li>User visits the application</li>
+                <li>If not logged in, they're redirected to the Login page</li>
+                <li>User clicks "Login with Google" button</li>
+                <li>Firebase handles Google OAuth authentication</li>
+                <li>Upon successful login, user data is stored in Firestore database</li>
+                <li>User is redirected to the Dashboard</li>
+            </ul>
+
+            <h4>2. Creating Meetings</h4>
+            <div class="flow-diagram">
+                Dashboard → Select Meeting Type → Fill Details → Save to Firestore → Get Shareable Link
+            </div>
+            <ul>
+                <li><strong>1-on-1 Meeting:</strong> Private meeting between two people</li>
+                <li><strong>Video Conference:</strong> Group meeting with multiple participants</li>
+                <li><strong>Anyone-can-join:</strong> Open meeting accessible to all users</li>
+            </ul>
+
+            <h4>3. Joining Meetings</h4>
+            <div class="flow-diagram">
+                Meeting URL → Validation → Permission Check → 100ms Room → Video Call
+            </div>
+            <ul>
+                <li>Users can join via direct link or "Join Now" button</li>
+                <li>System validates meeting exists and user has permission</li>
+                <li>If valid, user enters video call interface</li>
+            </ul>
+
+            <h3>Technical Architecture</h3>
+
+            <h4>Frontend (React)</h4>
+            <ul>
+                <li><strong>Components:</strong> Reusable UI elements (Header, Forms, Buttons)</li>
+                <li><strong>Pages:</strong> Full-screen views (Login, Dashboard, Meeting Forms)</li>
+                <li><strong>State Management:</strong> Redux manages global state (user info, theme)</li>
+                <li><strong>Routing:</strong> React Router handles navigation between pages</li>
+                <li><strong>Styling:</strong> Elastic UI provides consistent design system</li>
+            </ul>
+
+            <h4>Backend Services</h4>
+            <ul>
+                <li><strong>Firebase Authentication:</strong> Handles Google OAuth and user sessions</li>
+                <li><strong>Firebase Firestore:</strong> Stores user profiles and meeting data</li>
+                <li><strong>100ms Video Service:</strong> Provides video calling infrastructure</li>
+            </ul>
+
+            <h4>Data Flow Examples</h4>
+            <div class="code-block">
+User Authentication:
+User → Google OAuth → Firebase Auth → Firestore → Redux Store → UI Update
+
+Creating Meetings:
+User Input → Form Validation → Firestore Write → Success Message → Redirect
+
+Joining Meetings:
+Meeting URL → Validation → Permission Check → 100ms Room → Video Call
+            </div>
+
+            <h3>Key Features</h3>
+
+            <h4>Meeting Types</h4>
+            <ul>
+                <li><strong>1-on-1:</strong> Only creator and one invited user can join</li>
+                <li><strong>Video Conference:</strong> Multiple invited users can join</li>
+                <li><strong>Anyone-can-join:</strong> Any authenticated user can join</li>
+            </ul>
+
+            <h4>Security & Permissions</h4>
+            <ul>
+                <li>All users must be authenticated via Google</li>
+                <li>Meeting access controlled based on meeting type</li>
+                <li>Private meetings check user permissions before allowing entry</li>
+            </ul>
+
+            <h4>Deployment Process</h4>
+            <ol>
+                <li>Code changes pushed to GitHub</li>
+                <li>GitHub Actions automatically triggers build</li>
+                <li>Project built with environment variables</li>
+                <li>Deployed to GitHub Pages automatically</li>
+            </ol>
+
+            <div class="highlight">
+                <strong>Live Application:</strong> The project is deployed and accessible at <code>https://algoraver22.github.io/meetup-lite</code>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>4. Advanced Theoretical Concepts</h2>
+
+            <h3>Design Patterns Used</h3>
+
+            <h4>1. Observer Pattern</h4>
+            <div class="highlight">
+                <strong>Theory:</strong> Objects (observers) automatically get notified when another object (subject) changes state.
+            </div>
+            <p><strong>Implementation:</strong></p>
+            <ul>
+                <li>Redux store notifies components when state changes</li>
+                <li>Firebase real-time listeners update UI when database changes</li>
+                <li>Event handlers respond to user interactions</li>
+            </ul>
+
+            <h4>2. Factory Pattern</h4>
+            <div class="highlight">
+                <strong>Theory:</strong> Creates objects without specifying exact classes, using a common interface.
+            </div>
+            <p><strong>Implementation:</strong></p>
+            <ul>
+                <li>Meeting creation based on type (1-on-1, video conference, anyone-can-join)</li>
+                <li>Component rendering based on route parameters</li>
+                <li>Toast notifications with different types (success, error, warning)</li>
+            </ul>
+
+            <h4>3. Singleton Pattern</h4>
+            <div class="highlight">
+                <strong>Theory:</strong> Ensures only one instance of a class exists throughout the application.
+            </div>
+            <p><strong>Implementation:</strong></p>
+            <ul>
+                <li>Redux store (single source of truth)</li>
+                <li>Firebase configuration (one instance per app)</li>
+                <li>Authentication state management</li>
+            </ul>
+
+            <h3>Software Engineering Principles</h3>
+
+            <h4>SOLID Principles</h4>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Principle</th>
+                        <th>Implementation in Project</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Single Responsibility</strong></td>
+                        <td>Each component has one reason to change (Header only handles navigation)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Open/Closed</strong></td>
+                        <td>Components open for extension, closed for modification</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Liskov Substitution</strong></td>
+                        <td>Components can be replaced with their subtypes</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Interface Segregation</strong></td>
+                        <td>Components depend only on interfaces they use</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Dependency Inversion</strong></td>
+                        <td>High-level modules don't depend on low-level modules</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Performance Optimization Concepts</h3>
+
+            <h4>Code Splitting</h4>
+            <div class="highlight">
+                <strong>Theory:</strong> Breaking code into smaller chunks that load on demand.
+            </div>
+            <p><strong>Implementation:</strong></p>
+            <ul>
+                <li>React.lazy() for component-level splitting</li>
+                <li>Route-based code splitting</li>
+                <li>Vendor libraries separated from app code</li>
+            </ul>
+
+            <h4>Virtual DOM</h4>
+            <div class="highlight">
+                <strong>Theory:</strong> In-memory representation of real DOM for efficient updates.
+            </div>
+            <p><strong>Implementation:</strong></p>
+            <ul>
+                <li>React's reconciliation algorithm</li>
+                <li>Minimal DOM manipulations</li>
+                <li>Batch updates for better performance</li>
+            </ul>
+
+            <h3>Testing Strategies</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Testing Type</th>
+                        <th>Purpose</th>
+                        <th>Implementation</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Unit Testing</strong></td>
+                        <td>Testing individual components in isolation</td>
+                        <td>Jest + React Testing Library</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Integration Testing</strong></td>
+                        <td>Testing interaction between components</td>
+                        <td>API integration testing</td>
+                    </tr>
+                    <tr>
+                        <td><strong>End-to-End Testing</strong></td>
+                        <td>Testing complete user scenarios</td>
+                        <td>Full authentication workflow testing</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <h3>Modern Web Development Concepts</h3>
+
+            <h4>Progressive Web App (PWA)</h4>
+            <div class="highlight">
+                <strong>Theory:</strong> Web apps that provide native app-like experience.
+            </div>
+            <p><strong>Implementation:</strong></p>
+            <ul>
+                <li>Service worker for offline functionality</li>
+                <li>Web app manifest for installability</li>
+                <li>Responsive design for all devices</li>
+            </ul>
+
+            <h4>Jamstack Architecture</h4>
+            <div class="highlight">
+                <strong>Theory:</strong> JavaScript, APIs, and Markup for fast, secure websites.
+            </div>
+            <p><strong>Implementation:</strong></p>
+            <ul>
+                <li>Static site generation</li>
+                <li>API-driven functionality</li>
+                <li>CDN deployment</li>
+                <li>Serverless functions</li>
+            </ul>
+
+            <div class="highlight">
+                <strong>Conclusion:</strong> These theoretical concepts form the foundation of modern web application development and are essential for building scalable, maintainable, and secure applications like Meetup Lite.
+            </div>
+        </div>
+    </div>
+</body>
+</html>
